@@ -18,26 +18,25 @@ box-sizing:border-box;
 }
 
 body{
+
 font-family:'Cormorant Garamond',serif;
 color:#2b2b2b;
 
 background:
 linear-gradient(
 180deg,
-#efe8df 0%,
-#d7dfc9 20%,
-#cfd6c2 40%,
-#c5cbbd 60%,
-#bfc4b7 80%,
-#aeb6a4 100%
+#f4ebe5,
+#e8e2d8,
+#d7dfc9,
+#c8d1bf,
+#bfc4b7
 );
 
 background-size:200% 200%;
-animation:gradientMove 25s ease infinite;
+animation:gradientMove 30s ease infinite;
 
-line-height:1.6;
 text-align:center;
-padding-bottom:100px;
+overflow-x:hidden;
 }
 
 @keyframes gradientMove{
@@ -53,9 +52,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-pointer-events:none;
 background-image:url("https://grainy-gradients.vercel.app/noise.svg");
 opacity:0.15;
+pointer-events:none;
 }
 
 /* cover */
@@ -78,31 +77,30 @@ to{opacity:1;}
 
 .names{
 font-family:'Great Vibes',cursive;
-font-size:64px;
+font-size:70px;
 color:#3f4d34;
 }
 
 .date{
+font-size:24px;
 margin-top:20px;
-font-size:22px;
 letter-spacing:2px;
 }
 
 .scroll{
 margin-top:40px;
-font-size:14px;
 opacity:0.7;
 }
 
 /* sections */
 
 .section{
-max-width:600px;
+max-width:650px;
 margin:120px auto 0;
 padding:0 20px;
 
 opacity:0;
-transform:translateY(30px);
+transform:translateY(40px);
 transition:1s;
 }
 
@@ -112,30 +110,25 @@ transform:translateY(0);
 }
 
 h2{
-font-size:34px;
+font-size:36px;
 margin-bottom:20px;
 color:#3f4d34;
 }
 
 .small{
-font-size:18px;
-opacity:0.9;
-}
-
-/* timeline */
-
-.timeline{
-font-size:22px;
-margin-top:20px;
+font-size:19px;
+line-height:1.6;
 }
 
 /* buttons */
 
 .button{
+
 display:inline-block;
+
 margin-top:30px;
 
-padding:14px 32px;
+padding:14px 34px;
 
 border-radius:40px;
 
@@ -153,55 +146,82 @@ background:#3e5022;
 transform:translateY(-2px);
 }
 
-/* modal */
+/* dresscode */
 
-.modal{
-display:none;
+.palette{
 
-position:fixed;
-top:0;
-left:0;
+display:flex;
+flex-wrap:wrap;
 
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,0.6);
-
-align-items:center;
 justify-content:center;
 
-z-index:1000;
+gap:18px;
+
+margin-top:30px;
 }
 
-.modal-content{
+.color{
 
-background:white;
+width:55px;
+height:55px;
 
-padding:20px;
+border-radius:50%;
 
-border-radius:20px;
-
-width:90%;
-max-width:600px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
-.close{
-font-size:30px;
-cursor:pointer;
-float:right;
+.c1{background:#d8a5a5;}
+.c2{background:#fff1b5;}
+.c3{background:#e8d7c5;}
+.c4{background:#6b7a42;}
+.c5{background:#c6d7a3;}
+.c6{background:#8e8e8e;}
+.c7{background:#000;}
+
+/* timer */
+
+.timer{
+
+font-size:28px;
+margin-top:20px;
+
+}
+
+/* leaves */
+
+.leaf{
+position:fixed;
+top:-10px;
+
+width:18px;
+height:18px;
+
+background:#556b2f;
+
+border-radius:50% 0;
+
+opacity:0.7;
+
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+
 }
 
 /* mobile */
 
 @media (max-width:600px){
 
-.names{
-font-size:48px;
-}
+.names{font-size:50px;}
 
-h2{
-font-size:28px;
-}
+h2{font-size:28px;}
+
+.timer{font-size:22px;}
 
 }
 
@@ -226,7 +246,6 @@ font-size:28px;
 
 </div>
 
-
 <div class="section">
 
 <p id="inviteText" class="small">
@@ -239,16 +258,24 @@ font-size:28px;
 
 </div>
 
+<div class="section">
+
+<h2>До свадьбы осталось</h2>
+
+<div class="timer" id="timer">
+</div>
+
+</div>
 
 <div class="section">
 
 <h2>Начало вечера</h2>
 
-<div class="timeline">
+<p class="small">
 
 <b>16:00 — Фуршет</b>
 
-</div>
+</p>
 
 <p class="small">
 
@@ -258,7 +285,6 @@ font-size:28px;
 </p>
 
 </div>
-
 
 <div class="section">
 
@@ -273,7 +299,7 @@ font-size:28px;
 </p>
 
 <a class="button"
-href="https://go.2gis.com/AmCHp"
+href="https://2gis.ru/chelyabinsk/firm/70000001097212854"
 target="_blank">
 
 посмотреть на карте
@@ -282,6 +308,30 @@ target="_blank">
 
 </div>
 
+<div class="section">
+
+<h2>Dress Code</h2>
+
+<p class="small">
+
+Будем рады, если вы поддержите  
+цветовую гамму нашего вечера
+
+</p>
+
+<div class="palette">
+
+<div class="color c1"></div>
+<div class="color c2"></div>
+<div class="color c3"></div>
+<div class="color c4"></div>
+<div class="color c5"></div>
+<div class="color c6"></div>
+<div class="color c7"></div>
+
+</div>
+
+</div>
 
 <div class="section">
 
@@ -289,13 +339,14 @@ target="_blank">
 
 <p class="small">
 
-Чтобы нам было проще подготовить бар  
-пожалуйста выберите напитки  
+Пожалуйста выберите напитки  
 которые вы предпочитаете
 
 </p>
 
-<a class="button" id="openForm">
+<a class="button"
+href="https://forms.gle/31JG21tvqHr4byKB7"
+target="_blank">
 
 выбрать напитки
 
@@ -303,28 +354,9 @@ target="_blank">
 
 </div>
 
-
-<div id="formModal" class="modal">
-
-<div class="modal-content">
-
-<span class="close">&times;</span>
-
-<iframe
-src="https://docs.google.com/forms/d/e/1FAIpQLSdRqyb_8_QnGDt-yIx5QWhgrsUvruiUdX8O871eaSzNCHbwaA/viewform?embedded=true"
-width="100%"
-height="600"
-frameborder="0">
-</iframe>
-
-</div>
-
-</div>
-
-
 <script>
 
-/* имя в приглашении */
+/* имя гостя */
 
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("name");
@@ -346,12 +378,8 @@ window.addEventListener("scroll",()=>{
 
 sections.forEach(sec=>{
 
-const top = sec.getBoundingClientRect().top;
-
-if(top < window.innerHeight-100){
-
+if(sec.getBoundingClientRect().top < window.innerHeight-100){
 sec.classList.add("visible");
-
 }
 
 });
@@ -369,21 +397,44 @@ behavior:"smooth"
 
 },4000);
 
-/* форма */
+/* таймер */
 
-const modal=document.getElementById("formModal");
-const btn=document.getElementById("openForm");
-const close=document.querySelector(".close");
+const weddingDate = new Date("June 5, 2026 16:00:00").getTime();
 
-btn.onclick=()=>modal.style.display="flex";
+const timer = document.getElementById("timer");
 
-close.onclick=()=>modal.style.display="none";
+setInterval(()=>{
 
-window.onclick=(e)=>{
-if(e.target==modal){
-modal.style.display="none";
+const now = new Date().getTime();
+
+const diff = weddingDate - now;
+
+const days = Math.floor(diff/(1000*60*60*24));
+const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+
+timer.innerHTML =
+days+" дней "+hours+" часов "+minutes+" минут";
+
+},1000);
+
+/* падающие листья */
+
+for(let i=0;i<15;i++){
+
+const leaf = document.createElement("div");
+
+leaf.className="leaf";
+
+leaf.style.left=Math.random()*100+"vw";
+
+leaf.style.animationDuration=(8+Math.random()*10)+"s";
+
+leaf.style.opacity=Math.random();
+
+document.body.appendChild(leaf);
+
 }
-};
 
 </script>
 
