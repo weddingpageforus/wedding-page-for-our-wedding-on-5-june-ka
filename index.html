@@ -1,145 +1,208 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ксения и Андрей</title>
+<title>Ксения и Андрей — Свадьба</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Cormorant+Infant&family=Bad+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---beige:#f2eee7;
---olive:#a9ad86;
---darkgreen:#3f4f3c;
---rose:#e2c6cc;
---gray:#9a9a9a;
---black:#1b1b1b;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:'Cormorant Infant',serif;
-background:var(--olive);
-color:var(--black);
+font-family:'Cormorant Garamond',serif;
+color:#2b2b2b;
+
+background:
+linear-gradient(
+180deg,
+#efe8df 0%,
+#d7dfc9 20%,
+#cfd6c2 40%,
+#c5cbbd 60%,
+#bfc4b7 80%,
+#aeb6a4 100%
+);
+
+background-size:200% 200%;
+animation:gradientMove 25s ease infinite;
+
+line-height:1.6;
+text-align:center;
+padding-bottom:100px;
 }
 
-/* бумажная текстура */
+@keyframes gradientMove{
+0%{background-position:0% 0%;}
+50%{background-position:0% 100%;}
+100%{background-position:0% 0%;}
+}
 
 body:before{
 content:"";
 position:fixed;
-inset:0;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+top:0;
+left:0;
+width:100%;
+height:100%;
 pointer-events:none;
+background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.15;
 }
 
 /* cover */
 
 .cover{
-position:fixed;
-inset:0;
-background:var(--beige);
+height:100vh;
+
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
-z-index:10;
-transition:1s;
+justify-content:center;
+
+opacity:0;
+animation:fadeIn 2s ease forwards;
 }
 
-.cover.hide{
-opacity:0;
-pointer-events:none;
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
 .names{
-font-family:'Playfair Display',serif;
-font-size:40px;
-}
-
-button{
-padding:12px 28px;
-border-radius:30px;
-border:1px solid black;
-background:none;
-cursor:pointer;
-margin-top:30px;
-}
-
-/* страница */
-
-.wrapper{
-max-width:420px;
-margin:auto;
-background:var(--beige);
-padding:40px 20px;
-}
-
-.section{
-margin:50px 0;
-text-align:center;
-}
-
-.script{
-font-family:'Bad Script',cursive;
+font-family:'Great Vibes',cursive;
+font-size:64px;
+color:#3f4d34;
 }
 
 .date{
-font-size:50px;
+margin-top:20px;
+font-size:22px;
+letter-spacing:2px;
 }
+
+.scroll{
+margin-top:40px;
+font-size:14px;
+opacity:0.7;
+}
+
+/* sections */
+
+.section{
+max-width:600px;
+margin:120px auto 0;
+padding:0 20px;
+
+opacity:0;
+transform:translateY(30px);
+transition:1s;
+}
+
+.section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-size:34px;
+margin-bottom:20px;
+color:#3f4d34;
+}
+
+.small{
+font-size:18px;
+opacity:0.9;
+}
+
+/* timeline */
+
+.timeline{
+font-size:22px;
+margin-top:20px;
+}
+
+/* buttons */
 
 .button{
 display:inline-block;
-padding:10px 20px;
-border:1px solid black;
-border-radius:30px;
+margin-top:30px;
+
+padding:14px 32px;
+
+border-radius:40px;
+
+background:#556b2f;
+color:white;
+
 text-decoration:none;
-color:black;
-margin-top:20px;
-}
-
-.colors{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-top:20px;
-}
-
-.color{
-width:30px;
-height:30px;
-border-radius:50%;
-animation:breathe 10s infinite ease-in-out;
-}
-
-@keyframes breathe{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.1)}
-}
-
-/* форма */
-
-.drinks{
-margin-top:20px;
-text-align:left;
-}
-
-.drinks label{
-display:block;
-margin:8px 0;
-}
-
-.submit{
-margin-top:20px;
-}
-
-.thanks{
-display:none;
-margin-top:20px;
 font-size:18px;
+
+transition:0.3s;
+}
+
+.button:hover{
+background:#3e5022;
+transform:translateY(-2px);
+}
+
+/* modal */
+
+.modal{
+display:none;
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.6);
+
+align-items:center;
+justify-content:center;
+
+z-index:1000;
+}
+
+.modal-content{
+
+background:white;
+
+padding:20px;
+
+border-radius:20px;
+
+width:90%;
+max-width:600px;
+}
+
+.close{
+font-size:30px;
+cursor:pointer;
+float:right;
+}
+
+/* mobile */
+
+@media (max-width:600px){
+
+.names{
+font-size:48px;
+}
+
+h2{
+font-size:28px;
+}
+
 }
 
 </style>
@@ -147,172 +210,180 @@ font-size:18px;
 
 <body>
 
-<audio id="sound">
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5fbe7b5a70.mp3">
-</audio>
+<div class="cover">
 
-<div class="cover" id="cover">
+<div class="names">
+Ксения & Андрей
+</div>
 
-<div class="names">КСЕНИЯ & АНДРЕЙ</div>
-<div>05 июня 2026</div>
+<div class="date">
+05 июня 2026
+</div>
 
-<button onclick="openInvite()">Открыть приглашение</button>
+<div class="scroll">
+листайте вниз
+</div>
 
 </div>
 
-<div class="wrapper">
 
 <div class="section">
 
-<div class="names">КСЕНИЯ & АНДРЕЙ</div>
+<p id="inviteText" class="small">
 
-<p id="inviteText" class="script">
-Приглашаем вас разделить с нами
-самый тёплый день нашей жизни
+Приглашаем вас разделить с нами  
+самый тёплый и важный день  
+нашей жизни
+
 </p>
 
 </div>
 
-<div class="section">
-
-<div class="script">июнь</div>
-<div class="date">05</div>
-<div class="script">2026</div>
-
-</div>
 
 <div class="section">
 
 <h2>Начало вечера</h2>
 
-<p><b>16:00 — Фуршет</b></p>
+<div class="timeline">
 
-<p>Просим прибыть к 16:00</p>
+<b>16:00 — Фуршет</b>
 
 </div>
+
+<p class="small">
+
+Просим вас прибыть к 16:00  
+чтобы вместе начать праздник
+
+</p>
+
+</div>
+
 
 <div class="section">
 
 <h2>Место</h2>
 
-<p>Ресторан Flora<br>
-Челябинск, ул. Свободы 155</p>
+<p class="small">
+
+Челябинск  
+ресторан Flora  
+ул. Свободы 155
+
+</p>
 
 <a class="button"
 href="https://go.2gis.com/AmCHp"
 target="_blank">
+
 посмотреть на карте
+
 </a>
 
 </div>
 
-<div class="section">
-
-<h2>Dress code</h2>
-
-<div class="colors">
-
-<div class="color" style="background:#f2eee7"></div>
-<div class="color" style="background:#dfe4c8"></div>
-<div class="color" style="background:#a9ad86"></div>
-<div class="color" style="background:#3f4f3c"></div>
-<div class="color" style="background:#9a9a9a"></div>
-<div class="color" style="background:#e2c6cc"></div>
-<div class="color" style="background:#000"></div>
-
-</div>
-
-</div>
 
 <div class="section">
 
 <h2>Напитки</h2>
 
-<form id="drinkForm">
+<p class="small">
 
-<div class="drinks">
+Чтобы нам было проще подготовить бар  
+пожалуйста выберите напитки  
+которые вы предпочитаете
 
-<label><input type="checkbox" value="Вино красное"> Вино красное</label>
-<label><input type="checkbox" value="Вино белое"> Вино белое</label>
-<label><input type="checkbox" value="Водка"> Водка</label>
-<label><input type="checkbox" value="Виски"> Виски</label>
-<label><input type="checkbox" value="Коньяк"> Коньяк</label>
-<label><input type="checkbox" value="Шампанское"> Шампанское</label>
+</p>
 
-</div>
+<a class="button" id="openForm">
 
-<button class="submit">Отправить</button>
+выбрать напитки
 
-</form>
-
-<div class="thanks" id="thanks">
-
-Спасибо 🤍  
-Ваш выбор сохранён
+</a>
 
 </div>
 
+
+<div id="formModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLSdRqyb_8_QnGDt-yIx5QWhgrsUvruiUdX8O871eaSzNCHbwaA/viewform?embedded=true"
+width="100%"
+height="600"
+frameborder="0">
+</iframe>
+
 </div>
 
 </div>
+
 
 <script>
 
-/* персональное имя */
+/* имя в приглашении */
 
-const params=new URLSearchParams(window.location.search)
-const guest=params.get("name")
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("name");
 
 if(guest){
-document.getElementById("inviteText").innerHTML=
-`<b>${guest}</b>, приглашаем вас разделить с нами
-самый тёплый день нашей жизни`
-}
 
-/* открыть приглашение */
-
-function openInvite(){
-
-document.getElementById("cover").classList.add("hide")
-
-document.getElementById("sound").volume=0.15
-document.getElementById("sound").play()
+document.getElementById("inviteText").innerHTML =
+`<b>${guest}</b>, приглашаем вас разделить с нами<br>
+самый тёплый и важный день<br>
+нашей жизни`;
 
 }
 
-/* отправка формы */
+/* появление секций */
 
-document.getElementById("drinkForm").addEventListener("submit",function(e){
+const sections = document.querySelectorAll(".section");
 
-e.preventDefault()
+window.addEventListener("scroll",()=>{
 
-const checked=[...document.querySelectorAll("input:checked")]
-.map(x=>x.value)
-.join(", ")
+sections.forEach(sec=>{
 
-const name=guest || "Гость"
+const top = sec.getBoundingClientRect().top;
 
-fetch("https://docs.google.com/forms/d/e/FORM_ID/formResponse",{
+if(top < window.innerHeight-100){
 
-method:"POST",
+sec.classList.add("visible");
 
-mode:"no-cors",
+}
 
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
+});
 
-body:
+});
 
-"entry.NAME="+encodeURIComponent(name)+
-"&entry.DRINKS="+encodeURIComponent(checked)
+/* автоскролл */
 
-})
+setTimeout(()=>{
 
-document.getElementById("drinkForm").style.display="none"
-document.getElementById("thanks").style.display="block"
+window.scrollTo({
+top:window.innerHeight,
+behavior:"smooth"
+});
 
-})
+},4000);
+
+/* форма */
+
+const modal=document.getElementById("formModal");
+const btn=document.getElementById("openForm");
+const close=document.querySelector(".close");
+
+btn.onclick=()=>modal.style.display="flex";
+
+close.onclick=()=>modal.style.display="none";
+
+window.onclick=(e)=>{
+if(e.target==modal){
+modal.style.display="none";
+}
+};
 
 </script>
 
