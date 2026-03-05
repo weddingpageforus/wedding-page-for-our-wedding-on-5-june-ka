@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ксения и Андрей</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Cormorant+Infant&family=Bad+Script&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--beige:#f2eee7;
+--olive:#a9ad86;
+--darkgreen:#3f4f3c;
+--rose:#e2c6cc;
+--gray:#9a9a9a;
+--black:#1b1b1b;
+}
+
+body{
+margin:0;
+font-family:'Cormorant Infant',serif;
+background:var(--olive);
+color:var(--black);
+}
+
+/* бумажная текстура */
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+pointer-events:none;
+}
+
+/* cover */
+
+.cover{
+position:fixed;
+inset:0;
+background:var(--beige);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:10;
+transition:1s;
+}
+
+.cover.hide{
+opacity:0;
+pointer-events:none;
+}
+
+.names{
+font-family:'Playfair Display',serif;
+font-size:40px;
+}
+
+button{
+padding:12px 28px;
+border-radius:30px;
+border:1px solid black;
+background:none;
+cursor:pointer;
+margin-top:30px;
+}
+
+/* страница */
+
+.wrapper{
+max-width:420px;
+margin:auto;
+background:var(--beige);
+padding:40px 20px;
+}
+
+.section{
+margin:50px 0;
+text-align:center;
+}
+
+.script{
+font-family:'Bad Script',cursive;
+}
+
+.date{
+font-size:50px;
+}
+
+.button{
+display:inline-block;
+padding:10px 20px;
+border:1px solid black;
+border-radius:30px;
+text-decoration:none;
+color:black;
+margin-top:20px;
+}
+
+.colors{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:20px;
+}
+
+.color{
+width:30px;
+height:30px;
+border-radius:50%;
+animation:breathe 10s infinite ease-in-out;
+}
+
+@keyframes breathe{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.1)}
+}
+
+/* форма */
+
+.drinks{
+margin-top:20px;
+text-align:left;
+}
+
+.drinks label{
+display:block;
+margin:8px 0;
+}
+
+.submit{
+margin-top:20px;
+}
+
+.thanks{
+display:none;
+margin-top:20px;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="sound">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5fbe7b5a70.mp3">
+</audio>
+
+<div class="cover" id="cover">
+
+<div class="names">КСЕНИЯ & АНДРЕЙ</div>
+<div>05 июня 2026</div>
+
+<button onclick="openInvite()">Открыть приглашение</button>
+
+</div>
+
+<div class="wrapper">
+
+<div class="section">
+
+<div class="names">КСЕНИЯ & АНДРЕЙ</div>
+
+<p id="inviteText" class="script">
+Приглашаем вас разделить с нами
+самый тёплый день нашей жизни
+</p>
+
+</div>
+
+<div class="section">
+
+<div class="script">июнь</div>
+<div class="date">05</div>
+<div class="script">2026</div>
+
+</div>
+
+<div class="section">
+
+<h2>Начало вечера</h2>
+
+<p><b>16:00 — Фуршет</b></p>
+
+<p>Просим прибыть к 16:00</p>
+
+</div>
+
+<div class="section">
+
+<h2>Место</h2>
+
+<p>Ресторан Flora<br>
+Челябинск, ул. Свободы 155</p>
+
+<a class="button"
+href="https://go.2gis.com/AmCHp"
+target="_blank">
+посмотреть на карте
+</a>
+
+</div>
+
+<div class="section">
+
+<h2>Dress code</h2>
+
+<div class="colors">
+
+<div class="color" style="background:#f2eee7"></div>
+<div class="color" style="background:#dfe4c8"></div>
+<div class="color" style="background:#a9ad86"></div>
+<div class="color" style="background:#3f4f3c"></div>
+<div class="color" style="background:#9a9a9a"></div>
+<div class="color" style="background:#e2c6cc"></div>
+<div class="color" style="background:#000"></div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Напитки</h2>
+
+<form id="drinkForm">
+
+<div class="drinks">
+
+<label><input type="checkbox" value="Вино красное"> Вино красное</label>
+<label><input type="checkbox" value="Вино белое"> Вино белое</label>
+<label><input type="checkbox" value="Водка"> Водка</label>
+<label><input type="checkbox" value="Виски"> Виски</label>
+<label><input type="checkbox" value="Коньяк"> Коньяк</label>
+<label><input type="checkbox" value="Шампанское"> Шампанское</label>
+
+</div>
+
+<button class="submit">Отправить</button>
+
+</form>
+
+<div class="thanks" id="thanks">
+
+Спасибо 🤍  
+Ваш выбор сохранён
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* персональное имя */
+
+const params=new URLSearchParams(window.location.search)
+const guest=params.get("name")
+
+if(guest){
+document.getElementById("inviteText").innerHTML=
+`<b>${guest}</b>, приглашаем вас разделить с нами
+самый тёплый день нашей жизни`
+}
+
+/* открыть приглашение */
+
+function openInvite(){
+
+document.getElementById("cover").classList.add("hide")
+
+document.getElementById("sound").volume=0.15
+document.getElementById("sound").play()
+
+}
+
+/* отправка формы */
+
+document.getElementById("drinkForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+const checked=[...document.querySelectorAll("input:checked")]
+.map(x=>x.value)
+.join(", ")
+
+const name=guest || "Гость"
+
+fetch("https://docs.google.com/forms/d/e/FORM_ID/formResponse",{
+
+method:"POST",
+
+mode:"no-cors",
+
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:
+
+"entry.NAME="+encodeURIComponent(name)+
+"&entry.DRINKS="+encodeURIComponent(checked)
+
+})
+
+document.getElementById("drinkForm").style.display="none"
+document.getElementById("thanks").style.display="block"
+
+})
+
+</script>
+
+</body>
+</html>
